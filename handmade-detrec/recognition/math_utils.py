@@ -1,5 +1,7 @@
 """Simple math functions needed for the neural network"""
 
+import numpy as np
+
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
