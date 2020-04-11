@@ -8,7 +8,6 @@ import cv2
 # create function to have better components
 DETECTION_COMPONENTS = {"blue": [[[95, 70, 50], [166, 255, 255]]],
                         "red": [[[0, 50, 50], [14, 255, 255]], [[160, 100, 100], [179, 255, 255]]]}
-HELP_COMPONENTS = {"white": [[[0, 0, 100], [255, 100, 255]]], "black": [[[0, 0, 0], [255, 80, 60]]]}
 
 
 def capt_rectangle(arr):
