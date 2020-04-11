@@ -1,3 +1,5 @@
+"""Utilitaries to manage images from the GTSRB and GTSDB datasets"""
+
 import os
 from PIL import Image
 
