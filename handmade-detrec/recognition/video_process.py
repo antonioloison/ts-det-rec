@@ -9,6 +9,7 @@ import cv2
 IMAGE_SIZE = 28 * 28 * 2
 
 cam = cv2.VideoCapture(0)
+
 NN_blue_circles = Nnetwork([IMAGE_SIZE, 8, 7, 3], [sigmoid, sigmoid, sigmoid, sigmoid])
 NN_rectangles = Nnetwork([IMAGE_SIZE, 6, 3], [sigmoid, sigmoid, sigmoid, sigmoid])
 NN_red_circles = Nnetwork([IMAGE_SIZE, 6, 4], [sigmoid, sigmoid, sigmoid, sigmoid])
@@ -29,10 +30,16 @@ NN_red_triangles.load(
 neural_networks = {"trianglesred": NN_red_triangles, "rectanglesblue": NN_rectangles,
                    "circlesred": NN_red_circles, "circlesblue": NN_blue_circles}
 
+print("Press q to exit")
 while True:
     ret, img = cam.read()
     img = cv2.resize(img, (1060, int(220 / 340 * 1060)))
 
     detected_signs(img, neural_networks)
     cv2.imshow("cam", img)
-    cv2.waitKey(10)
+    if cv2.waitKey(10) & 0xFF == ord('q'):
+        break
+
+# When everything done, release the capture
+cam.release()
+cv2.destroyAllWindows()
